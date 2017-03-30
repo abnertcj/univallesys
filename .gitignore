@@ -1,0 +1,16 @@
+.[pP]roject
+.[pP]roject
+.metadata
+.metadata/*
+.classpath
+.classpath/*
+.settings
+.settings/*
+[tT]arget
+[tT]arget/*
+*.war
+*.class
+*.orig
+*.
+.classpath
+
