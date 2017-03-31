@@ -151,10 +151,15 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.ancientprogramming.fixedformat4j</groupId>
+    	<artifactId>fixedformat4j</artifactId>
+    	<version>1.2.2</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

@@ -39,8 +39,7 @@ public class GrupoProdutoRESTController {
 
 		return new ResponseEntity(grupo, HttpStatus.OK);
 	}
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/grupoproduto")
 	public ResponseEntity createGrupo(@RequestBody GrupoDeProdutos grupo) {
 
@@ -65,7 +64,7 @@ public class GrupoProdutoRESTController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/grupoproduto/{id}")
 	public ResponseEntity updateGrupo(@PathVariable Integer id, @RequestBody GrupoDeProdutos grupo) {
 
-		GrupoDeProdutos grupoPorId =  grupoDao.findById(id);
+		GrupoDeProdutos grupoPorId = grupoDao.findById(id);
 
 		if (null == grupoPorId) {
 			return new ResponseEntity("Não há grupo com o id:" + id, HttpStatus.NOT_FOUND);
