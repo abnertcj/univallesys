@@ -37,7 +37,7 @@ Login with the following data:
     "username": "admin@gmail.com",
     "password": "admin",
 
-#### Usage ####
+### Usage ###
 
 Below is an example of usage of REST API:
 
