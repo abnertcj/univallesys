@@ -1,77 +1,75 @@
 package br.com.univallesys.controllers;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import br.com.univallesys.daos.ProdutoDAO;
+import br.com.univallesys.models.Produto;
+import com.ancientprogramming.fixedformat4j.format.FixedFormatManager;
+import com.ancientprogramming.fixedformat4j.format.impl.FixedFormatManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.univallesys.daos.ProdutosDAO;
-import br.com.univallesys.models.Produto;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @RestController
 @Transactional
-@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ProdutoRESTController {
 
-	@Autowired
-	private ProdutosDAO produtoDao;
+    @Autowired
+    private ProdutoDAO produtoDao;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/produtos")
-	public List<Produto> getProdutos() {
-		return produtoDao.all();
-	}
+    private static FixedFormatManager manager = new FixedFormatManagerImpl();
 
-	@RequestMapping(method = RequestMethod.GET, value = "/produto/{id}")
-	public ResponseEntity getProduto(@PathVariable("id") Integer id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/produto")
+    public List<Produto> getProdutos() {
+        return produtoDao.all();
+    }
 
-		Produto produto = produtoDao.findById(id);
-		if (produto == null) {
-			return new ResponseEntity("Não existe produto para o id:" + id, HttpStatus.NOT_FOUND);
-		}
+    @RequestMapping(method = RequestMethod.GET, value = "/produto/{id}")
+    public ResponseEntity getProduto(@PathVariable("id") Integer id) {
 
-		return new ResponseEntity(produto, HttpStatus.OK);
-	}
+        Produto produto = produtoDao.findById(id);
+        if (produto == null) {
+            return new ResponseEntity("Não existe produto para o id:" + id, HttpStatus.NOT_FOUND);
+        }
 
-	@RequestMapping(method = RequestMethod.POST, value = "/produto")
-	public ResponseEntity createProduto(@RequestBody Produto produto) {
+        return new ResponseEntity(produto, HttpStatus.OK);
+    }
 
-		produtoDao.save(produto);
 
-		return new ResponseEntity(produto, HttpStatus.OK);
-	}
+    @RequestMapping(method = RequestMethod.POST, value = "/produto")
+    public ResponseEntity createProduto(@RequestBody Produto produto) {
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/produto/{id}")
-	public ResponseEntity deleteProduto(@PathVariable Integer id) {
+        produtoDao.save(produto);
 
-		Produto produto = produtoDao.findById(id);
-		if (null == produto) {
-			return new ResponseEntity("Não há produto com o id:" + id, HttpStatus.NOT_FOUND);
-		} else
-			produtoDao.remove(produto);
+        return new ResponseEntity(produto, HttpStatus.OK);
+    }
 
-		return new ResponseEntity(id, HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/produto/{id}")
+    public ResponseEntity deleteProduto(@PathVariable Integer id) {
 
-	}
+        Produto produto = produtoDao.findById(id);
+        if (null == produto) {
+            return new ResponseEntity("Não há produto com o id:" + id, HttpStatus.NOT_FOUND);
+        } else
+            produtoDao.remove(produto);
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/produto/{id}")
-	public ResponseEntity updateProduto(@PathVariable Integer id, @RequestBody Produto produto) {
+        return new ResponseEntity(id, HttpStatus.OK);
 
-		Produto produtoPorId = produtoDao.findById(id);
+    }
 
-		if (null == produtoPorId) {
-			return new ResponseEntity("Não há produto com o id:" + id, HttpStatus.NOT_FOUND);
-		} else
-			produtoDao.update(produto);
+    @RequestMapping(method = RequestMethod.PUT, value = "/produto/{id}")
+    public ResponseEntity updateProduto(@PathVariable Integer id, @RequestBody Produto produto) {
 
-		return new ResponseEntity(produto, HttpStatus.OK);
-	}
+        Produto produtoPorId = produtoDao.findById(id);
+
+        if (null == produtoPorId) {
+            return new ResponseEntity("Não há produto com o id:" + id, HttpStatus.NOT_FOUND);
+        } else
+            produtoDao.update(produto);
+
+        return new ResponseEntity(produto, HttpStatus.OK);
+    }
 
 }

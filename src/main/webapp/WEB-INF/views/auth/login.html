@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/assets/css/authentication/login.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-app="univalleApp" ng-controller="AuthenticationController">
+
+<div class="principal-menu">
+    <div class="btn-voltar">
+        <img src="/resources/assets/img/back-arrow.png">
+    </div>
+    <div class="logo">
+        <img src="/resources/assets/img/logo_nav.png">
+    </div>
+</div>
+
+<div class="content">
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-mail" ng-model="model.ident.username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Senha" ng-model="model.ident.password">
+        </div>
+
+        <div class="form-group">
+            <button class="btn-green" ng-click="checkCredentials()">Login</button>
+        </div>
+
+</div>
+
+</body>
+<script src='/bower_components/jquery/dist/jquery.min.js'></script>
+<script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+<script src='/bower_components/angular/angular.min.js'></script>
+
+<script src="/resources/assets/univalle-ng/univalle-app.js" ></script>
+<script src="/resources/assets/univalle-ng/authentication/controller/authentication_controller.js" ></script>
+<script src="/resources/assets/univalle-ng/authentication/service/authentication_service.js" ></script>
+
+
+</html>

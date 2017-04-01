@@ -1,5 +1,7 @@
 # Front dependencies
 src/main/webapp/assets/node_modules
+src/main/webapp/node_modules
+src/main/webapp/bower_components
 
 .[pP]roject
 .[pP]roject

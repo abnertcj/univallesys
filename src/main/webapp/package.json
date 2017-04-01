@@ -1,0 +1,16 @@
+{
+  "name": "univalle-mock",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.4.3",
+    "express": "~4.5.1",
+    "grunt": "^1.0.1",
+    "grunt-express": "^1.4.1",
+    "method-override": "~2.0.2",
+    "morgan": "latest"
+  },
+  "devDependencies": {
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

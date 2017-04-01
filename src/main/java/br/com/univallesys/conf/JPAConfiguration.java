@@ -42,10 +42,8 @@ public class JPAConfiguration
       DriverManagerDataSource dataSource = new DriverManagerDataSource();
       dataSource.setDriverClassName("com.mysql.jdbc.Driver");
       dataSource.setUrl("jdbc:mysql://localhost:3306/UNI_DATABASE");
-      dataSource.setUsername("");
-      dataSource.setPassword("");
-//      dataSource.setUsername("testeUnivalle");
-//      dataSource.setPassword("ok46azl6");
+      dataSource.setUsername("testeUnivalle");
+      dataSource.setPassword("ok46azl6");
       return dataSource;
    }
 
@@ -66,6 +64,7 @@ public class JPAConfiguration
    Properties additionalProperties()
    {
       Properties properties = new Properties();
+      properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
       properties.setProperty("hibernate.hbm2ddl.auto", "update");
       properties.setProperty("hibernate.show_sql", "true");
       return properties;

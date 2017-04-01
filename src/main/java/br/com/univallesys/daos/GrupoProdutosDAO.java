@@ -47,7 +47,7 @@ public class GrupoProdutosDAO {
 
 	public List<GrupoDeProdutos> findByGrupoLambda(String grupo) {
 		Stream<GrupoDeProdutos> streamPessoas = all().stream();
-		return streamPessoas.filter(g -> g.getProduct_group_id().startsWith(grupo)).collect(Collectors.toList());
+		return streamPessoas.filter(p -> p.getProduct_group_id().startsWith(grupo)).collect(Collectors.toList());
 	}
-	
+
 }

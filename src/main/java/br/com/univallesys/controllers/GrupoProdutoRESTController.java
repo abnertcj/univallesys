@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.ancientprogramming.fixedformat4j.format.FixedFormatManager;
+import com.ancientprogramming.fixedformat4j.format.impl.FixedFormatManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ public class GrupoProdutoRESTController {
 	@Autowired
 	private GrupoProdutosDAO grupoDao;
 
+	private static FixedFormatManager manager = new FixedFormatManagerImpl();
+
 	@RequestMapping(method = RequestMethod.GET, value = "/gruposproduto")
 	public List<GrupoDeProdutos> getGrupos() {
 		return grupoDao.all();
@@ -39,6 +43,7 @@ public class GrupoProdutoRESTController {
 
 		return new ResponseEntity(grupo, HttpStatus.OK);
 	}
+
 
 	@RequestMapping(method = RequestMethod.POST, value = "/grupoproduto")
 	public ResponseEntity createGrupo(@RequestBody GrupoDeProdutos grupo) {
@@ -64,7 +69,7 @@ public class GrupoProdutoRESTController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/grupoproduto/{id}")
 	public ResponseEntity updateGrupo(@PathVariable Integer id, @RequestBody GrupoDeProdutos grupo) {
 
-		GrupoDeProdutos grupoPorId = grupoDao.findById(id);
+		GrupoDeProdutos grupoPorId =  grupoDao.findById(id);
 
 		if (null == grupoPorId) {
 			return new ResponseEntity("Não há grupo com o id:" + id, HttpStatus.NOT_FOUND);
